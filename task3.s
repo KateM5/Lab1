@@ -1,0 +1,22 @@
+.section .bss
+.globl ram          # making ram a global function
+.lcomm ram, 256     # reserves 256 bytes of RAM
+
+.section .text
+.globl empty_ram     # make funx visiable to C program
+
+empty_ram:
+    # store 00H into RAM locations 50H-58H using direct address
+    movb $0x00, ram+0x50
+    movb $0x00, ram+0x51
+    movb $0x00, ram+0x52
+    movb $0x00, ram+0x53
+    movb $0x00, ram+0x54
+    movb $0x00, ram+0x55
+    movb $0x00, ram+0x56
+    movb $0x00, ram+0x57
+    movb $0x00, ram+0x58
+
+    ret             # return control back to C program
+
+.section .note.GNU-stack,"",@progbits
